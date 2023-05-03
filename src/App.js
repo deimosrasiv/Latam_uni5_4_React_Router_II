@@ -1,25 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "@mui/material";
+import Navbar from "./Components/Navbar/Navbar";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Contacto from "./Pages/Contacto"
+import Pizzas from "./Pages/Pizzas"
+import Pizza from "./Pages/Pizza"
+import List from "./Pages/List"
 
-function App() {
+
+
+import InboxIcon from "@mui/icons-material/Inbox";
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+
+
+const navArrayLinks = [
+  {
+      title: "Home",
+      path: "/",
+      color: "inherit",
+      icon:<InboxIcon/>
+  },
+  {
+    title: "Contacto",
+    path: "/Contacto",
+    color: "inherit",
+    icon: <ContactMailIcon />
+  },   
+  {
+      title: "Pizzas",
+      path: "/pizzas",
+      color: "inherit",
+      icon:<LocalPizzaIcon/>
+  },
+  
+  
+  
+]
+
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      
+      <Navbar navArrayLinks={ navArrayLinks} />
+      <Container sx={{ mt: 5 }} >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Contacto" element={<Contacto />} />
+          <Route path="/Pizzas" element={<Pizzas />} />
+          
+          <Route path="/Pizza/:nombre" element={<Pizza />} />
+         
+            
+            
+
+
+
+          
+          
+       </Routes>
+        
+      </Container>
+
+      
+    </>
   );
 }
-
-export default App;
